@@ -15,7 +15,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
 
 ?>
-<a class="uk-display-block uk-inline-clip uk-card uk-overflow-hidden uk-link-reset uk-transition-toggle"
+<a class="radicalmart-categories__item uk-display-block uk-inline-clip uk-card uk-overflow-hidden uk-link-reset uk-transition-toggle"
    href="<?php echo $displayData->link; ?>">
 	<div class="uk-cover-container uk-height-medium uk-transition-scale-up uk-transition-opaque">
 		<?php if ($icon = $displayData->media->get('image', $displayData->media->get('icon')))

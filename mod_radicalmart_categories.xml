@@ -41,6 +41,14 @@
 					<option value="1">JGLOBAL_ROOT</option>
 				</field>
 
+                <field
+					name="exclude"
+					type="categories"
+					label="MOD_RADICALMART_CATEGORIES_PARAM_EXCLUDE"
+					filter="integer"
+					multiple="true">
+				</field>
+
 				<field name="layout"
                        type="modulelayout"
                        label="JFIELD_ALT_LAYOUT_LABEL"
@@ -49,9 +57,16 @@
 
                 <field name="cols"
                        type="integer"
-                       label="MOD_RADICALMART_CATEGORY_PARAM_COLS"
+                       label="MOD_RADICALMART_CATEGORIES_PARAM_COLS"
                        first="1" last="5" step="1" default="3"
                        showon="layout:_:grid,_:overlay"
+                />
+
+                <field name="level"
+                       type="integer"
+                       label="MOD_RADICALMART_CATEGORIES_PARAM_LEVEL"
+                       first="1" last="10" step="1" default="3"
+                       showon="layout:_:nav,_:accordion"
                 />
             </fieldset>
             <fieldset name="advanced">
