@@ -14,7 +14,7 @@ use Joomla\CMS\Layout\LayoutHelper;
 ?>
 
 <?php if (!empty($items)): ?>
-    <div class="radicalmart-categories <?php echo $moduleclass_sfx; ?>">
+    <div class="radicalmart-categories radicalmart-categories_grid <?php echo $moduleclass_sfx; ?>">
         <div class="radicalmart-categories__list uk-grid-divider uk-grid-medium" uk-grid
              uk-height-match="target: > div > .uk-card >.uk-card-body,> div > .uk-card >.uk-card-footer > .uk-grid; row:false">
             <?php foreach ($items as $i => $item): ?>

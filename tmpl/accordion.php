@@ -9,21 +9,20 @@
  */
 
 defined('_JEXEC') or die;
-
 ?>
 
 <?php if (!empty($items)): ?>
-    <div class="radicalmart-categories <?php echo $moduleclass_sfx; ?>">
+    <div class="radicalmart-categories radicalmart-categories_accordion <?php echo $moduleclass_sfx; ?>">
         <?php
             echo $helper->renderTree(
                 $items,
                 1,
-               'ul',
+                'ul',
                 'li',
                 [
                     1 => [
-                        'class'  => 'uk-nav-default uk-nav-parent-icon uk-nav',
-                        'uk-nav' => ''
+                        'class'  => 'uk-nav-default uk-nav',
+                        'uk-nav' => 'toggle: > a > i'
                     ],
                     2 => [
                         'class' => 'uk-nav-sub'
@@ -34,6 +33,9 @@ defined('_JEXEC') or die;
                         'class' => 'uk-parent'
                     ]
                 ],
+                'uk-active',
+                'uk-open',
+                '<i uk-icon="chevron-down" class="uk-margin-auto-left"></i>',
             );
         ?>
     </div>

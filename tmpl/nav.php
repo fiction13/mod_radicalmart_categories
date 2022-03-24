@@ -13,12 +13,12 @@ defined('_JEXEC') or die;
 ?>
 
 <?php if (!empty($items)): ?>
-    <div class="radicalmart-categories radicalmart-category_nav <?php echo $moduleclass_sfx; ?>">
+    <div class="radicalmart-categories radicalmart-categories_nav <?php echo $moduleclass_sfx; ?>">
         <?php
             echo $helper->renderTree(
                 $items,
                 1,
-               'ul',
+                'ul',
                 'li',
                 [
                     1 => [
