@@ -25,12 +25,17 @@ $model = BaseDatabaseModel::getInstance('Categories', 'RadicalMartModel', array(
 $level = 0;
 
 $model->setState('params', Factory::getApplication()->getParams());
-$model->setState('filter.category.id', (int)$params->get('parent'));
 $model->setState('filter.published', 1);
 $model->setState('filter.limit', (int)$params->get('limit'));
 
+if ($params->get('parent') != 1)
+{
+    $model->setState('category.id', (int)$params->get('parent'));
+}
+
 // Check exclude
-if ($params->get('exclude')) {
+if ($params->get('exclude'))
+{
     $model->setState('filter.item_id', $params->get('exclude'));
     $model->setState('filter.item_id.include', false);
 }
@@ -39,12 +44,14 @@ if ($params->get('exclude')) {
 $allCategories = $model->getItems();
 
 // Get full category object
-if ($allCategories) {
+if ($allCategories)
+{
     $items = [];
     $modelCategory = BaseDatabaseModel::getInstance('Category', 'RadicalMartModel', array('ignore_request' => true));
     $modelCategory->setState('params', Factory::getApplication()->getParams());
 
-    foreach ($allCategories as $key => $category) {
+    foreach ($allCategories as $key => $category)
+    {
         $items[] = $modelCategory->getItem($category->id);
     }
 }

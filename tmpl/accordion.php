@@ -25,7 +25,8 @@ defined('_JEXEC') or die;
                         'uk-nav' => 'toggle: > a > i'
                     ],
                     2 => [
-                        'class' => 'uk-nav-sub'
+                        'class' => 'uk-nav-sub',
+                        'hidden' => ''
                     ]
                 ],
                 [
