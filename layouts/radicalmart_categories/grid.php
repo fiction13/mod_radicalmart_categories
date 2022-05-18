@@ -1,7 +1,7 @@
 <?php
 /*
  * @package   mod_radicalmart_categories
- * @version   1.0.0
+ * @version   1.1.3
  * @author    Dmitriy Vasyukov - https://fictionlabs.ru
  * @copyright Copyright (c) 2022 Fictionlabs. All rights reserved.
  * @license   GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
@@ -11,7 +11,6 @@
 defined('_JEXEC') or die;
 
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Text;
 
 /* @var object $displayData Category object */
 
