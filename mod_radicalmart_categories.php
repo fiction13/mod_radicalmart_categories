@@ -1,7 +1,7 @@
 <?php
 /*
  * @package   mod_radicalmart_categories
- * @version   1.1.3
+ * @version   1.1.4
  * @author    Dmitriy Vasyukov - https://fictionlabs.ru
  * @copyright Copyright (c) 2022 Fictionlabs. All rights reserved.
  * @license   GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ModuleHelper;
+use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 
 \JLoader::register('RadicalMartHelperIntegration', JPATH_ADMINISTRATOR . '/components/com_radicalmart/helpers/integration.php');
@@ -26,11 +27,14 @@ $level = 0;
 
 $model->setState('params', Factory::getApplication()->getParams());
 $model->setState('filter.published', 1);
-$model->setState('filter.limit', (int)$params->get('limit'));
+$model->setState('filter.limit', (int) $params->get('limit'));
+
+// Set language filter state
+$model->setState('filter.language', Multilanguage::isEnabled());
 
 if ($params->get('parent') != 1)
 {
-    $model->setState('category.id', (int)$params->get('parent'));
+    $model->setState('category.id', (int) $params->get('parent'));
 }
 
 // Check exclude
@@ -41,20 +45,7 @@ if ($params->get('exclude'))
 }
 
 // Get categories
-$allCategories = $model->getItems();
-
-// Get full category object
-if ($allCategories)
-{
-    $items = [];
-    $modelCategory = BaseDatabaseModel::getInstance('Category', 'RadicalMartModel', array('ignore_request' => true));
-    $modelCategory->setState('params', Factory::getApplication()->getParams());
-
-    foreach ($allCategories as $key => $category)
-    {
-        $items[] = $modelCategory->getItem($category->id);
-    }
-}
+$items = $model->getItems();
 
 // Get category tree
 $helper = new modRadicalMartCategoriesHelper($params);
