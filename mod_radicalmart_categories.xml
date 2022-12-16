@@ -1,56 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ @package   mod_radicalmart_categories
-  ~ @version   1.1.4
+  ~ @version   __DEPLOY_VERSION__
   ~ @author    Dmitriy Vasyukov - https://fictionlabs.ru
   ~ @copyright Copyright (c) 2022 Fictionlabs. All rights reserved.
   ~ @license   GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
   ~ @link      https://fictionlabs.ru/
   -->
 
-<extension version="3.9" type="module" client="site" method="upgrade">
+<extension version="4.2" type="module" client="site" method="upgrade">
     <name>MOD_RADICALMART_CATEGORIES</name>
     <author>Dmitriy Vasyukov</author>
-    <creationDate>August 2022</creationDate>
+    <creationDate>December 2022</creationDate>
     <copyright>Copyright (C) 2022 FictionLabs. All rights reserved.</copyright>
-    <license> GNU General Public License version 3 or later; see LICENSE</license>
+    <license>GNU General Public License version 3 or later; see LICENSE</license>
     <authorEmail>info@fictionlabs.ru</authorEmail>
     <authorUrl>https://fictionlabs.ru</authorUrl>
-    <version>1.1.4</version>
+    <version>1.2.0-dev</version>
     <description>MOD_RADICALMART_CATEGORIES_DESCRIPTION</description>
     <scriptfile>script.php</scriptfile>
+    <namespace path="src">Joomla\Module\RadicalmartCategories</namespace>
+
+    <!--  Languages  -->
     <languages folder="language">
-        <language tag="en-GB">en-GB/en-GB.mod_radicalmart_categories.ini</language>
-        <language tag="en-GB">en-GB/en-GB.mod_radicalmart_categories.sys.ini</language>
-        <language tag="ru-RU">ru-RU/ru-RU.mod_radicalmart_categories.ini</language>
-        <language tag="ru-RU">ru-RU/ru-RU.mod_radicalmart_categories.sys.ini</language>
+        <language tag="en-GB">en-GB/mod_radicalmart_categories.ini</language>
+        <language tag="en-GB">en-GB/mod_radicalmart_categories.sys.ini</language>
+        <language tag="ru-RU">ru-RU/mod_radicalmart_categories.ini</language>
+        <language tag="ru-RU">ru-RU/mod_radicalmart_categories.sys.ini</language>
     </languages>
+
+    <!--  Files  -->
     <files>
-        <filename module="mod_radicalmart_categories">mod_radicalmart_categories.php</filename>
-        <folder>src</folder>
+        <folder module="mod_radicalmart_categories">src</folder>
+        <folder>services</folder>
         <folder>tmpl</folder>
     </files>
+
+    <!--  Params  -->
     <config>
-        <fields name="params" addfieldpath="/administrator/components/com_radicalmart/models/fields">
+        <fields name="params" addfieldprefix="Joomla\Component\RadicalMart\Administrator\Field">
             <fieldset name="basic">
                 <field
-					name="parent"
-					type="categories"
-					label="MOD_RADICALMART_CATEGORIES_PARAM_PARENT"
-					filter="integer"
-					required="true">
-					<option value="1">JGLOBAL_ROOT</option>
-				</field>
+                        name="parent"
+                        type="categories"
+                        label="MOD_RADICALMART_CATEGORIES_PARAM_PARENT"
+                        filter="integer"
+                        layout="joomla.form.field.list-fancy-select"
+                        required="true">
+                    <option value="1">JGLOBAL_ROOT_PARENT</option>
+                </field>
 
                 <field
-					name="exclude"
-					type="categories"
-					label="MOD_RADICALMART_CATEGORIES_PARAM_EXCLUDE"
-					filter="integer"
-					multiple="true">
-				</field>
+                        name="exclude"
+                        type="categories"
+                        label="MOD_RADICALMART_CATEGORIES_PARAM_EXCLUDE"
+                        filter="integer"
+                        layout="joomla.form.field.list-fancy-select"
+                        multiple="true">
+                </field>
 
-				<field name="layout"
+                <field name="layout"
                        type="modulelayout"
                        label="JFIELD_ALT_LAYOUT_LABEL"
                        description="JFIELD_ALT_MODULE_LAYOUT_DESC"
@@ -101,7 +110,8 @@
         </fields>
     </config>
 
+    <!--  Layouts  -->
     <layouts destination="modules" folder="layouts">
-		<folder>radicalmart_categories</folder>
-	</layouts>
+        <folder>radicalmart_categories</folder>
+    </layouts>
 </extension>
