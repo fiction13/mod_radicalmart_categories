@@ -38,7 +38,7 @@
 
     <!--  Params  -->
     <config>
-        <fields name="params" addfieldprefix="Joomla\Component\RadicalMart\Administrator\Field">
+        <fields name="params">
             <fieldset name="basic">
                 <field
                         name="parent"
@@ -46,7 +46,8 @@
                         label="MOD_RADICALMART_CATEGORIES_PARAM_PARENT"
                         filter="integer"
                         layout="joomla.form.field.list-fancy-select"
-                        required="true">
+                        required="true"
+                        addfieldprefix="Joomla\Component\RadicalMart\Administrator\Field">
                     <option value="1">JGLOBAL_ROOT_PARENT</option>
                 </field>
 
