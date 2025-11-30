@@ -8,16 +8,16 @@
  * @link      https://fictionlabs.ru/
  */
 
-namespace Joomla\Module\RadicalmartCategories\Site\Dispatcher;
+namespace Joomla\Module\RadicalMartCategories\Site\Dispatcher;
 
-\defined('JPATH_PLATFORM') or die;
+\defined('_JEXEC') or die;
 
 use Joomla\CMS\Application\CMSApplicationInterface;
 use Joomla\CMS\Dispatcher\AbstractModuleDispatcher;
 use Joomla\CMS\Extension\ModuleInterface;
 use Joomla\Input\Input;
 use Joomla\CMS\Helper\HelperFactoryAwareTrait;
-use Joomla\Module\RadicalmartCategories\Site\Helper\RadicalmartCategoriesHelper;
+use Joomla\Module\RadicalMartCategories\Site\Helper\CategoriesHelper;
 
 /**
  * Dispatcher class
@@ -53,7 +53,7 @@ class Dispatcher extends AbstractModuleDispatcher
 	protected function getLayoutData()
 	{
 		$data                    = parent::getLayoutData();
-		$data['items']           = (new RadicalmartCategoriesHelper($data['params']))->getTreeItems();
+		$data['items']           = (new CategoriesHelper($data['params']))->getTreeItems();
 		$data['moduleclass_sfx'] = htmlspecialchars($data['params']->get('moduleclass_sfx', ''), ENT_COMPAT, 'UTF-8');
 
 		return $data;

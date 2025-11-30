@@ -8,7 +8,7 @@
  * @link      https://fictionlabs.ru/
  */
 
-use Joomla\Module\RadicalmartCategories\Site\Helper\RadicalmartCategoriesHelper;
+use Joomla\Module\RadicalMartCategories\Site\Helper\CategoriesHelper;
 
 defined('_JEXEC') or die;
 
@@ -16,31 +16,8 @@ defined('_JEXEC') or die;
 
 <?php if (!empty($items)): ?>
     <div class="radicalmart-categories radicalmart-categories_accordion <?php echo $moduleclass_sfx; ?>">
-        <?php
-            echo (new RadicalmartCategoriesHelper($params))->renderTree(
-                $items,
-                1,
-                'ul',
-                'li',
-                [
-                    1 => [
-                        'class'  => 'uk-nav-default uk-nav',
-                        'uk-nav' => 'toggle: > a > i'
-                    ],
-                    2 => [
-                        'class' => 'uk-nav-sub',
-                        'hidden' => ''
-                    ]
-                ],
-                [
-                    1 => [
-                        'class' => 'uk-parent'
-                    ]
-                ],
-                'uk-active',
-                'uk-open',
-                '<i uk-icon="chevron-down" class="uk-margin-auto-left"></i>',
-            );
-        ?>
+        <div class="list-group">
+			<?php echo (new CategoriesHelper($params))->renderTree($items, 1, 'accordion'); ?>
+        </div>
     </div>
 <?php endif; ?>

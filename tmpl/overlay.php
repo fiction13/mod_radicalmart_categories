@@ -11,18 +11,15 @@
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Layout\LayoutHelper;
+
 ?>
 
 <?php if (!empty($items)): ?>
-    <div class="radicalmart-categories radicalmart-categories_overlay <?php echo $moduleclass_sfx; ?>">
-        <div class="radicalmart-categories__list uk-grid-divider uk-grid-medium" uk-grid
-             uk-height-match="target: > div > .uk-card >.uk-card-body,> div > .uk-card >.uk-card-footer > .uk-grid; row:false">
-            <?php foreach ($items as $i => $item): ?>
-                <div class="uk-width-1-<?php echo $params->get('cols'); ?>@s">
-                    <?php echo LayoutHelper::render('modules.radicalmart_categories.overlay',
-                        $item); ?>
-                </div>
-            <?php endforeach; ?>
-        </div>
+    <div class="radicalmart-categories radicalmart-categories_overlay row row-cols-md-2 row-cols-lg-3">
+		<?php foreach ($items as $item) : ?>
+            <div class="item-<?php echo $item->id; ?>">
+				<?php echo LayoutHelper::render('modules.radicalmart_categories.overlay', $item); ?>
+            </div>
+		<?php endforeach; ?>
     </div>
 <?php endif; ?>

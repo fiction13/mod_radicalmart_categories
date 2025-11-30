@@ -11,7 +11,7 @@
 <extension version="4.2" type="module" client="site" method="upgrade">
     <name>MOD_RADICALMART_CATEGORIES</name>
     <author>Dmitriy Vasyukov</author>
-    <creationDate>December 2022</creationDate>
+    <creationDate>April 2023</creationDate>
     <copyright>Copyright (C) 2022 FictionLabs. All rights reserved.</copyright>
     <license>GNU General Public License version 3 or later; see LICENSE</license>
     <authorEmail>info@fictionlabs.ru</authorEmail>
@@ -19,7 +19,7 @@
     <version>1.2.1-dev</version>
     <description>MOD_RADICALMART_CATEGORIES_DESCRIPTION</description>
     <scriptfile>script.php</scriptfile>
-    <namespace path="src">Joomla\Module\RadicalmartCategories</namespace>
+    <namespace path="src">Joomla\Module\RadicalMartCategories</namespace>
 
     <!--  Languages  -->
     <languages folder="language">
@@ -39,15 +39,23 @@
     <!--  Params  -->
     <config>
         <fields name="params">
-            <fieldset name="basic">
+            <fieldset name="basic" addfieldprefix="Joomla\Component\RadicalMart\Administrator\Field">
+                <field name="mode" type="radio"
+                       label="MOD_RADICALMART_CATEGORIES_PARAM_MODE"
+                       layout="joomla.form.field.list-fancy-select"
+                       required="true"
+                       default="parent">
+                    <option value="parent">MOD_RADICALMART_CATEGORIES_PARAM_MODE_PARENT</option>
+                    <option value="custom">MOD_RADICALMART_CATEGORIES_PARAM_MODE_CUSTOM</option>
+                </field>
+
                 <field
                         name="parent"
                         type="categories"
                         label="MOD_RADICALMART_CATEGORIES_PARAM_PARENT"
                         filter="integer"
                         layout="joomla.form.field.list-fancy-select"
-                        required="true"
-                        addfieldprefix="Joomla\Component\RadicalMart\Administrator\Field">
+                        showon="mode:parent">
                     <option value="1">JGLOBAL_ROOT_PARENT</option>
                 </field>
 
@@ -57,7 +65,18 @@
                         label="MOD_RADICALMART_CATEGORIES_PARAM_EXCLUDE"
                         filter="integer"
                         layout="joomla.form.field.list-fancy-select"
-                        multiple="true">
+                        multiple="true"
+                        showon="mode:parent">
+                </field>
+
+                <field
+                        name="custom"
+                        type="categories"
+                        label="MOD_RADICALMART_CATEGORIES_PARAM_CUSTOM"
+                        filter="integer"
+                        layout="joomla.form.field.list-fancy-select"
+                        multiple="true"
+                        showon="mode:custom">
                 </field>
 
                 <field name="layout"
@@ -65,13 +84,6 @@
                        label="JFIELD_ALT_LAYOUT_LABEL"
                        description="JFIELD_ALT_MODULE_LAYOUT_DESC"
                        class="form-select"
-                />
-
-                <field name="cols"
-                       type="integer"
-                       label="MOD_RADICALMART_CATEGORIES_PARAM_COLS"
-                       first="1" last="5" step="1" default="3"
-                       description="MOD_RADICALMART_CATEGORIES_PARAM_COLS_DESC"
                 />
 
                 <field name="level"

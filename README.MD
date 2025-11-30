@@ -13,13 +13,11 @@ RadicalMart Categories - модуль списка категории компо
  * выбор количества уровней отображения категорий в макетах accordion и nav
 
 ### Версии Joomla
-Модуль для версий Joomla 4.2+.
+Модуль для версий Joomla 5.4+.
 
 ### Другое
 
 Модуль содержит 4 собственных макета default, grid, accordion и nav.
-
-Модуль использует классы фреймворка UIkit.
 
 ## Лицензия
 GNU GPL v2.0 or later. [Подробнее](https://github.com/ficion13/mod_radicalmart_categories/blob/master/LICENSE)
