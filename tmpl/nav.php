@@ -16,8 +16,8 @@ defined('_JEXEC') or die;
 
 <?php if (!empty($items)): ?>
     <div class="radicalmart-categories radicalmart-categories_nav <?php echo $moduleclass_sfx; ?>">
-        <div class="nav flex-column">
+        <ul class="nav flex-column">
 			<?php echo (new CategoriesHelper($params))->renderTree($items, 1, 'nav'); ?>
-        </div>
+        </ul>
     </div>
 <?php endif; ?>
